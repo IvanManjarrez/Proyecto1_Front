@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a2e;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0f172a; }
+  ::-webkit-scrollbar-thumb { background: #e94560; border-radius: 3px; }
+}
+
+@layer components {
+  /* ── Botón primario (acento rojo, igual al Taller 3) ── */
+  .btn-primary {
+    @apply px-6 py-3 font-bold text-white rounded-full cursor-pointer
+           border-none transition-all duration-200
+           bg-[#e94560] hover:bg-[#d63050]
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  /* ── Botón outline ── */
+  .btn-outline {
+    @apply px-6 py-3 font-bold rounded-full cursor-pointer border-2
+           border-[#e94560] text-[#e94560] bg-transparent
+           transition-all duration-200
+           hover:bg-[#e94560] hover:text-white;
+  }
+
+  /* ── Card base ── */
+  .poke-card {
+    @apply bg-navy-mid rounded-xl overflow-hidden cursor-pointer
+           transition-all duration-300
+           shadow-card hover:-translate-y-1 hover:shadow-card-hover
+           border border-transparent hover:border-[#e94560]/30;
+  }
+
+  /* ── Input ── */
+  .poke-input {
+    @apply w-full px-4 py-3 rounded-lg border-2 border-[#2a2a4a]
+           bg-[#0f172a] text-white placeholder-[#777]
+           outline-none transition-colors duration-200
+           focus:border-[#e94560];
+  }
+
+  /* ── Select ── */
+  .poke-select {
+    @apply px-4 py-3 rounded-lg border-2 border-[#2a2a4a]
+           bg-[#0f172a] text-white outline-none cursor-pointer
+           transition-colors duration-200 focus:border-[#e94560];
+  }
+
+  /* ── Badge de tipo Pokémon ── */
+  .type-badge {
+    @apply inline-block px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wide;
+  }
+
+  /* ── Sección hero (exacto al .titulo del Taller 3) ── */
+  .hero-section {
+    background: linear-gradient(130deg, #1a1a2e, #0f335f);
+    @apply w-full text-center py-24 px-5;
+    min-height: calc(100vh - 64px);
+  }
+
+  /* ── Sección dark (exacto al .estudiantes del Taller 3) ── */
+  .dark-section {
+    background-color: #1a1a2e;
+    @apply w-full py-12 px-5 text-center;
+  }
+
+  /* ── Section title ── */
+  .section-title {
+    @apply text-3xl font-bold text-white mb-2;
+  }
+
+  .section-sub {
+    @apply text-[#777] text-lg mb-8;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin-ring {
+  to { transform: rotate(360deg); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.stagger-1 { animation-delay: 0.05s; opacity: 0; }
+.stagger-2 { animation-delay: 0.10s; opacity: 0; }
+.stagger-3 { animation-delay: 0.15s; opacity: 0; }
+.stagger-4 { animation-delay: 0.20s; opacity: 0; }
+.stagger-5 { animation-delay: 0.25s; opacity: 0; }
